@@ -1,11 +1,37 @@
 {
   "name": "platzigramapi",
   "version": "1.0.0",
-  "description": "Platzigram ResT Api\u001b[D\u001b[D\u001b[D\u001b[t",
-  "main": "index.js",
+  "description": "Platzigram ResT Api",
+  // "main": "index.js", no lo necesitamos porque vamos a usar micro services
   "scripts": {
+    "lint": "standard",
     "test": "npm run lint && ava"
   },
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "commonjs": true,
+      "es6": true,
+      "node": true,
+      "jquery": true
+    },
+    "parser": "babel-eslint",
+    "rules": {
+      "no-console": "warn",
+      "no-use-before-define": "warn",
+      "spaced-comment": "warn"
+    },
+    "extends": "standard"
+  },
+  "eslintIgnore": [
+    "/node_modules/*",
+    "build/*",
+    "!build/index.js",
+    "bundle.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/johnserrano15/platzigram-api.git"
