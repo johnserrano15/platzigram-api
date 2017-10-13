@@ -1,0 +1,33 @@
+{
+  "name": "platzigramapi",
+  "version": "1.0.0",
+  "description": "Platzigram ResT Api\u001b[D\u001b[D\u001b[D\u001b[t",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint && ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnserrano15/platzigram-api.git"
+  },
+  "author": "John Serrano <jandreys15@gmail.com> (https://twitter.com/jandrey15)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnserrano15/platzigram-api/issues"
+  },
+  "homepage": "https://github.com/johnserrano15/platzigram-api#readme",
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "babel-eslint": "^8.0.1",
+    "eslint": "^4.8.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "standard": "^10.0.3"
+  },
+  "dependencies": {
+    "micro": "^9.0.0"
+  }
+}
