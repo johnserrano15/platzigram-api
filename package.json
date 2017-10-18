@@ -2,7 +2,6 @@
   "name": "platzigramapi",
   "version": "1.0.0",
   "description": "Platzigram ResT Api",
-  // "main": "index.js", no lo necesitamos porque vamos a usar micro services
   "scripts": {
     "lint": "standard",
     "test": "npm run lint && ava"
@@ -51,9 +50,14 @@
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "test-listen": "^1.0.2"
   },
   "dependencies": {
-    "micro": "^9.0.0"
+    "babel-runtime": "^6.26.0",
+    "micro": "^9.0.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "uuid-base62": "^0.1.0"
   }
 }
