@@ -4,12 +4,13 @@ import test from 'ava'
 // Con micro se puede traspilar el código por eso usamos ES2015 y ES2016
 // import micro, { send } from 'micro'
 import micro from 'micro'
-import uuid from 'uuid-base62'
+// import uuid from 'uuid-base62'
 // Listen se complementa con micro
 import listen from 'test-listen'
 // Request es para hacer peticiones http es muy popular
 import request from 'request-promise'
 import pictures from '../pictures'
+import fixtures from './fixtures'
 
 // test básico para aprender a usar micro.
 /* test('GET /:id', async t => {
@@ -25,7 +26,8 @@ import pictures from '../pictures'
   t.deepEqual(body, { id })
 }) */
 
-test('GET /:id', async t => {
+// Test de prueba
+/* test('GET /:id', async t => {
   let id = uuid.v4()
 
   let srv = micro(pictures)
@@ -33,6 +35,17 @@ test('GET /:id', async t => {
   let url = await listen(srv)
   let body = await request({ uri: `${url}/${id}`, json: true })
   t.deepEqual(body, { id })
+}) */
+
+test('GET /:id', async t => {
+  let image = fixtures.getImage()
+  let srv = micro(pictures)
+  let url = await listen(srv)
+
+  console.log(`Esta es la url -> ${url}`)
+
+  let body = await request({ uri: `${url}/${image.publicId}`, json: true })
+  t.deepEqual(body, image)
 })
 
 test.todo('POST /')
