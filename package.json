@@ -4,7 +4,7 @@
   "description": "Platzigram ResT Api",
   "scripts": {
     "lint": "standard",
-    "test": "npm run lint && ava"
+    "test": "npm run lint && ava test/**-test.js"
   },
   "standard": {
     "parser": "babel-eslint"
@@ -32,7 +32,8 @@
     "bundle.js"
   ],
   "ava": {
-    "require": ["babel-register"]
+    "require": ["babel-register"],
+    "NODE_ENV": "test"
   },
   "babel": {
     "presets": ["@ava/stage-4"]
