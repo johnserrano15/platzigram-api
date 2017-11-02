@@ -37,16 +37,41 @@ import fixtures from './fixtures'
   t.deepEqual(body, { id })
 }) */
 
+test.beforeEach(async t => {
+  let srv = micro(pictures)
+  t.context.url = await listen(srv)
+})
+
 test('GET /:id', async t => {
   let image = fixtures.getImage()
-  let srv = micro(pictures)
-  let url = await listen(srv)
+  let url = t.context.url
 
-  console.log(`Esta es la url -> ${url}`)
+  // console.log(`Esta es la url -> ${url}`)
 
   let body = await request({ uri: `${url}/${image.publicId}`, json: true })
   t.deepEqual(body, image)
 })
 
-test.todo('POST /')
+test('POST /', async t => {
+  let image = fixtures.getImage()
+  let url = t.context.url
+
+  let options = {
+    method: 'POST',
+    uri: url,
+    json: true,
+    body: {
+      description: image.description,
+      src: image.src,
+      userId: image.userId
+    },
+    resolveWithFullResponse: true
+  }
+
+  // COn el resolveWithFullResponse habilitamos para que devuelva todo el object de la respuesta y no solo el body
+
+  let response = await request(options)
+  t.is(response.statusCOde, 201)
+  t.deepEqual(response.body, image)
+})
 test.todo('POST /:id/like')
