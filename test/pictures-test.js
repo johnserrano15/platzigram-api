@@ -71,7 +71,8 @@ test('POST /', async t => {
   // COn el resolveWithFullResponse habilitamos para que devuelva todo el object de la respuesta y no solo el body
 
   let response = await request(options)
-  t.is(response.statusCOde, 201)
+  t.is(response.statusCode, 201)
   t.deepEqual(response.body, image)
 })
+
 test.todo('POST /:id/like')

@@ -1,7 +1,7 @@
 'use strict'
 
 import HttpHash from 'http-hash'
-import { send } from 'micro'
+import { send, json } from 'micro'
 import Db from 'Platzigramdb'
 import config from './config'
 import DbStub from './test/stub/db'
@@ -26,6 +26,15 @@ hash.set('GET /:id', async function getPicture (req, res, params) {
   let image = await db.getImage(id)
   await db.disconnect()
   send(res, 200, image)
+})
+
+hash.set('POST /', async function postPicture (req, res, params) {
+  let image = await json(req)
+  await db.connect()
+  let created = await db.saveImage(image)
+  await db.disconnect()
+  // El status Code debe ser 201 porque asi lo definimos en el test
+  send(res, 201, created)
 })
 
 export default async function main (req, res) {
