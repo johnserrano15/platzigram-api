@@ -5,6 +5,8 @@ export default {
       id: 'fo7PJkN0RmMw',
       publicId: 'fo7PJkN0RmMwfo7PJkN0RmMw',
       userId: 'platzigram',
+      liked: false,
+      likes: 0,
       src: 'http://platzigram.test/fo7PJkN0RmMw.jpg',
       description: '#awesome',
       tags: ['awesome'],

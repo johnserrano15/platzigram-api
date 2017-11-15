@@ -37,6 +37,14 @@ hash.set('POST /', async function postPicture (req, res, params) {
   send(res, 201, created)
 })
 
+hash.set('POST /:id/like', async function likePicture (req, res, params) {
+  let id = params.id
+  await db.connect()
+  let image = await db.likeImage(id)
+  await db.disconnect()
+  send(res, 200, image)
+})
+
 export default async function main (req, res) {
   let { method, url } = req // una funcionalidad de ES2015
   let match = hash.get(`${method.toUpperCase()} ${url}`)
