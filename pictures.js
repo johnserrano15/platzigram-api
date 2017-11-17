@@ -22,6 +22,14 @@ const hash = HttpHash()
 
 // Nota: Tener en cuenta el orden en como se definen las rutas puede haber problemas con el /:id por eso es mejor definir primero /list lo mismo puede pasar con express.
 
+hash.set('GET /tag/:tag', async function byTag (req, res, params) {
+  let tag = params.tag
+  await db.connect()
+  let images = await db.getImagesByTag(tag)
+  await db.disconnect()
+  send(res, 200, images)
+})
+
 hash.set('GET /list', async function list (req, res, params) {
   await db.connect
   // Siempre agregar await para resolver promesas
