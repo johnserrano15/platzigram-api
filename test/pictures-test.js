@@ -39,7 +39,10 @@ import fixtures from './fixtures'
 
 test.beforeEach(async t => {
   let srv = micro(pictures)
+  // console.log('este es el servicio ', srv)
   t.context.url = await listen(srv)
+  // http://localhost:52625 -> es la url
+  // console.log('este es el servicio ', t.context.url)
 })
 
 test('GET /:id', async t => {
@@ -93,4 +96,19 @@ test('POST /:id/like', async t => {
   image.likes = 1
 
   t.deepEqual(body, image)
+})
+
+test('GET /list', async t => {
+  let images = fixtures.getImages()
+  let url = t.context.url
+
+  let options = {
+    method: 'GET',
+    uri: `${url}/list`,
+    json: true
+  }
+
+  let body = await request(options)
+
+  t.deepEqual(body, images)
 })

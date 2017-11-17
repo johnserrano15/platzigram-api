@@ -20,6 +20,16 @@ const hash = HttpHash()
   send(res, 200, params)
 }) */
 
+// Nota: Tener en cuenta el orden en como se definen las rutas puede haber problemas con el /:id por eso es mejor definir primero /list lo mismo puede pasar con express.
+
+hash.set('GET /list', async function list (req, res, params) {
+  await db.connect
+  // Siempre agregar await para resolver promesas
+  let images = await db.getImages()
+  await db.disconnect()
+  send(res, 200, images)
+})
+
 hash.set('GET /:id', async function getPicture (req, res, params) {
   let id = params.id
   await db.connect()
