@@ -27,5 +27,16 @@ export default {
       this.getImage(),
       this.getImage()
     ]
+  },
+
+  getUser () {
+    return {
+      id: 'fo7PJkN0RmMw876',
+      name: 'John Andrey',
+      username: 'jandrey',
+      email: 'ja@johnserrano.test',
+      password: 'ja1234',
+      createdAt: new Date().toString()
+    }
   }
 }
