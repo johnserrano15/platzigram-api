@@ -30,6 +30,18 @@ hash.set('POST /', async function saveUser (req, res, params) {
   send(res, 201, created)
 })
 
+hash.set('GET /:username', async function saveUser (req, res, params) {
+  let username = params.username
+  await db.connect()
+  let user = await db.getUser(username)
+  await db.disconnect()
+
+  delete user.email
+  delete user.password
+
+  send(res, 200, user)
+})
+
 export default async function main (req, res) {
   let { method, url } = req // una funcionalidad de ES2015
   let match = hash.get(`${method.toUpperCase()} ${url}`)

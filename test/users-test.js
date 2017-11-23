@@ -71,4 +71,21 @@ test('POST /', async t => {
   t.deepEqual(response.body, user)
 })
 
-test.todo('GET /:username')
+// el nombre del test es descriptivo.
+test('GET /:username', async t => {
+  let user = fixtures.getUser()
+  let url = t.context.url
+
+  let options = {
+    method: 'GET',
+    uri: `${url}/${user.username}`,
+    json: true
+  }
+
+  let body = await request(options)
+
+  delete user.email
+  delete user.password
+
+  t.deepEqual(body, user)
+})
