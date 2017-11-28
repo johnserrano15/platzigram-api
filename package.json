@@ -72,6 +72,7 @@
     "micro": "^9.0.0",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
+    "token-extractor": "^0.1.6",
     "uuid-base62": "^0.1.0"
   }
 }
