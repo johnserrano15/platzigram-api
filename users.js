@@ -36,6 +36,9 @@ hash.set('GET /:username', async function saveUser (req, res, params) {
   let user = await db.getUser(username)
   await db.disconnect()
 
+  let images = await db.getImagesByUser(username)
+  user.pictures = images
+
   delete user.email
   delete user.password
 

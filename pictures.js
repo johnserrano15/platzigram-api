@@ -5,14 +5,14 @@ import { send, json } from 'micro'
 import Db from 'Platzigramdb'
 import config from './config'
 import utils from './lib/utils'
-import DbStub from './test/stub/db'
+// import DbStub from './test/stub/db'
 
-const env = process.env.NODE_ENV || 'production'
+// const env = process.env.NODE_ENV || 'production'
 let db = new Db(config.db)
 // en este caso no se uso proxyrequire porque el modelado de la app no dio para hacerlo ya que estamos trabajando con common.js
-if (env === 'test') {
-  db = new DbStub()
-}
+// if (env === 'test') {
+//   db = new DbStub()
+// }
 
 const hash = HttpHash()
 

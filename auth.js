@@ -20,10 +20,11 @@ const hash = HttpHash()
 
 // si es el home, pero de este microservicio, y los microservicios son servidores independientes con su puerto especifico, el "/users" se usaria como namespace cuando se trabaja con una api completa.
 
-hash.set('POST /', async function authenticate (req, res, params) {
+hash.set('POST /', async function saveUser (req, res, params) {
   let credentials = await json(req)
   await db.connect()
   let auth = await db.authenticate(credentials.username, credentials.password)
+  await db.disconnect()
 
   if (!auth) {
     return send(res, 401, { error: 'invalid credentials' })
